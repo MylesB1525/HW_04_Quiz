@@ -1,0 +1,18 @@
+.card{
+  margin-top: 200px;
+
+}
+.card-body{
+  padding-top: 20px
+
+}
+.preQuizQuestions{
+  display: none;
+}
+
+#highScoreList{
+  margin-left: 100px;
+  margin-right: 535px;
+  font-size: 35px;
+
+}
