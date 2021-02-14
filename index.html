@@ -1,88 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Code Quiz</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/style.css">
-    <link rel="stylesheet" href="./reset.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="./reset.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
+  </head>
 
-<body>
-    <h1>
-        <nav class="navbar navbar-light bg-secondary">
-            <span class="navbar-brand mb-0 h1">View Highscores</span>
-            <span class="float-right mb-0 h5" id="timer">Time</span>
-        </nav>
-    </h1>
+  <body>
+    <nav class="navbar text-white bg-dark">
+      <a href="#" class="btn btn-info btn-sm active" role="button">View Highscores</a>
+      <span class="float-right mb-0 h5" id="timer">Time</span>
+    </nav>
+<!-- Quiz rules and Start button -->
     <main class="container preQuiz">
-        <h1 class="card ml-5 mr-5 row">
-            <h2 class="card-body mr-5 ml-5 bg-secondary">
-                <div class="h2 text-center">
-                    Coding Quiz Challenge
-                </div>
-                <div class="col-12 text-center row justify-content-center h4">
-                    Attempt to answer the following code related questions within the limited time.
-                    Keep in mind answering questions incorrectly will reduce time by 5 seconds!
-                    <h3 id="btnStart" class="btn btn-primary mt-3">
-                        Start Quiz
-                    </h3>
-                </div>
-            </h2>
-        </h1>
-    </main>
-    <main class="container preQuizQuestions">
-        <h1 class="card row">
-            <div class="card-body h4" id="q">Example question #1</div>
-        </h1>
-        <h2 class="d-flex flex-column">
-            <div class="row btn btn-outline-secondary mt-3 col-2" id="a">Example answer</div>
-            <div class="row btn btn-outline-secondary mt-3 col-2" id="b">Example answer</div>
-            <div class="row btn btn-outline-secondary mt-3 col-2" id="c">Example answer</div>
-            <div class="row btn btn-outline-secondary mt-3 col-2" id="d">Example answer</div>
+      <h1 class="card ml-5 mr-5 row">
+        <h2 class="card-body mr-5 ml-5 text-white bg-dark">
+          <div class="h2 text-center">Coding Quiz Challenge</div>
+          <div class="col-12 text-center row justify-content-center h4">
+            Attempt to answer the following code related questions within the
+            limited time. Each incorrect answer will reduce time by 5 seconds!
+            <h3 id="btnStart" class="btn btn-info mt-3">Start Quiz</h3>
+          </div>
         </h2>
+      </h1>
     </main>
+<!-- Questions and Answers -->
+    <main class="container preQuizQuestions">
+      <h1 class="card row">
+        <div class="card-body h4" id="q">Example question #1</div>
+      </h1>
+      <h2 class="d-flex flex-column">
+        <div class="row btn btn-outline-secondary mt-3 col-2" id="a">
+          Example answer
+        </div>
+        <div class="row btn btn-outline-secondary mt-3 col-2" id="b">
+          Example answer
+        </div>
+        <div class="row btn btn-outline-secondary mt-3 col-2" id="c">
+          Example answer
+        </div>
+        <div class="row btn btn-outline-secondary mt-3 col-2" id="d">
+          Example answer
+        </div>
+      </h2>
+    </main>
+<!-- Quiz finished -->
     <main class="container preQuizQuestions highScoreSubmit">
-        <h1 class="card row ml-5 mr-5">
-            <div class="card-body mr-5 ml-5 bg-secondary">
-                <div class="h2 text-center">
-                    All done!
-                    <div class="row justify-content-center">
-                        Your final score is <div class="ml-3 finalScore">0</div>
-                    </div>
-                </div>
-                <div class="h3 row justify-content-center">
-                    Enter initials:
-                    <div class="form-group ml-3">
-                        <input type="text" class="form-control highScoreInput" id="formGroupExampleInput"
-                            placeholder="">
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="btn btn-primary mb-3 submitBtn">Submit</div>
-                </div>
+      <h1 class="card row">
+        <div class="card-body mr-5 ml-5 text-white bg-dark">
+          <div class="h2 text-center">
+            All done!
+            <div class="row justify-content-center">
+              Your final score is
+              <div class="ml-3 finalScore">0</div>
             </div>
-        </h1>
+          </div>
+          <div class="h3 row justify-content-center">
+            Enter Name:
+            <div class="form-group ml-3">
+              <input
+                type="text"
+                class="form-control highScoreInput"
+                id="formGroupExampleInput"
+                placeholder=""
+              />
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="btn btn-info mb-3 submitBtn">Submit</div>
+          </div>
+        </div>
+      </h1>
     </main>
+<!-- Highscores -->
     <main class="container preQuizQuestions highScoreBoard">
-        <h1 class="card row ml-5 mr-5">
-            <div class="card-body mr-5 ml-5 bg-secondary">
-                <div class="h2 text-center row justify-content-center">Highscores</div>
-                <ul class="bg-light h4 row mb-3" id="highScoreList"></ul>
-                <div class="row justify-content-center">
-                    <div class="btn btn-primary mb-3 mr-3 goBack">Go back</div>
-                    <div class="btn btn-primary mb-3 clearScores">Clear Highscores</div>
-                </div>
-            </div>
-        </h1>
+      <h1 class="card row ml-5 mr-5">
+        <div class="card-body mr-5 ml-5 bg-dark">
+          <div class="h2 text-white text-center row justify-content-center">
+            Highscores
+          </div>
+          <ul class="bg-light h4 row mb-3" id="highScoreList"></ul>
+          <div class="row justify-content-center">
+            <div class="btn btn-info mb-3 mr-3 goBack">Go back</div>
+            <div class="btn btn-info mb-3 clearScores">Clear Highscores</div>
+          </div>
+        </div>
+      </h1>
     </main>
-    <script src="script.js"></script>
-</body>
 
+    <script src="script.js"></script>
+  </body>
 </html>
