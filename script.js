@@ -28,6 +28,7 @@ var btnAdvance = [choiceA, choiceB, choiceC, choiceD];
 var scores = [];
 
 // Questions
+var index = 0;
 var questions2 = [
   // Q1
   {
@@ -57,16 +58,30 @@ var questions2 = [
     answer: ["HTML", "German", "Java", "JavaScript"],
     correct: "German",
   },
-  
 ];
+
+function stopTime() {
+  clearInterval(timerInterval);
+  quizAdvance3();
+}
 
 // Timer function
 function startTimer() {
-  var timerInterval = setInterval(function () {
-    secondsLeft--;
-    timer.textContent = secondsLeft;
+  secondsLeft = 60;
+  document.querySelector("#timer").style.display = "block";
 
-    if (secondsLeft === 0) {
+  var timerInterval = setInterval(function () {
+    console.log(index);
+    if (index < questions2.length) {
+      if (secondsLeft === 0) {
+        clearInterval(timerInterval);
+        quizAdvance3();
+      }
+      secondsLeft--;
+      timer.textContent = secondsLeft;
+    }
+
+    if (secondsLeft <= 0) {
       clearInterval(timerInterval);
       quizAdvance3();
     }
@@ -86,7 +101,7 @@ function quizStart(event) {
     choiceD.textContent = questions2[questionNum].answer[3];
 
     startTimer();
-    console.log(secondsLeft);
+    //console.log(secondsLeft);
 
     var wrong = [choiceA, choiceC, choiceD];
 
@@ -125,6 +140,7 @@ function quizAdvance(event) {
 
 function quizAdvance2(event) {
   event.preventDefault();
+  index++;
   quizQuestions.textContent = questions2[2].question;
   choiceA.textContent = questions2[2].answer[0];
   choiceB.textContent = questions2[2].answer[1];
@@ -149,12 +165,17 @@ function quizAdvance2(event) {
 
 function highScores() {
   highScoreList.innerHTML = "";
+  //score area to display scores
+  document.querySelector("#highScoreList").textContent = "";
+  //get the localstorage score
+  var scores = JSON.parse(localStorage.getItem("scores"));
+  //set it to scores array
 
   for (var i = 0; i < scores.length; i++) {
     var score = scores[i];
 
     var li = document.createElement("li");
-    li.textContent = score + " " + secondsLeft;
+    li.textContent = score.name + " " + score.score;
     li.setAttribute("data-index", i);
 
     highScoreList.appendChild(li);
@@ -163,17 +184,29 @@ function highScores() {
 
 function quizAdvance3() {
   var highScoreInput = document.querySelector(".highScoreInput");
+  var endscore = secondsLeft;
   finalScore.textContent = secondsLeft;
+  document.querySelector("#timer").style.display = "none";
 
   preQuizQuestions.style.display = "none";
   highScoreSubmit.style.display = "block";
+
   submitBtn.addEventListener("click", function () {
     highScoreSubmit.style.display = "none";
     highScoreBoard.style.display = "block";
 
     var scoreText = highScoreInput.value.trim();
+    var userobj = {
+      name: scoreText,
+      score: endscore,
+    };
+    //overadding scores into the array
+    scores.push(userobj);
+    console.log(scores);
+    //make the array into a string
+    //set to localstorage the array
+    localStorage.setItem("scores", JSON.stringify(scores));
 
-    scores.push(scoreText);
     highScoreInput.value = "";
 
     highScores();
