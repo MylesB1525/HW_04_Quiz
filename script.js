@@ -35,8 +35,8 @@ var questions2 = [
     question: "What is wrapped around a string",
     answer: [
       "Square Brackets",
-      "Quotations",
       "Curly brackets",
+      "Quotations",
       "None of the above",
     ],
     correct: "Quotations",
